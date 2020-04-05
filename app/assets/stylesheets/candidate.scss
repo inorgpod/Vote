@@ -1,0 +1,20 @@
+body{
+  background-color: green;
+}
+
+
+.field_with_errors{
+  display: inline-block;
+
+
+  input[type="text"]{
+    border-color: hotpink;
+    border-width: 1px;
+  }
+
+  label{
+    color: indianred;
+  }
+
+}
+

@@ -1,0 +1,35 @@
+<h1>HI</h1>
+
+<!-- <%= link_to 'Add Candidate' , '/candidates/new'%> 意義同下-->
+<%= link_to 'Add Candidate' , new_candidate_path %> 
+<!-- 可去$rails routes看到路徑對照表 發現想要去new_candidate的寫法可看Prefix的名稱後面加上_path,
+  此種寫法不會將路徑寫死,可在日後回routes的頁面做覆寫修改路徑 -->
+
+<table>
+  <tr>
+    <td></td>
+    <td>Votes</td>
+    <td>Name</td>
+    <td>Party</td>
+    <td>Age</td>
+    <td>Action</td>
+  </tr>
+    
+
+  <% @candidates.each do |candidate|%>
+  <tr>
+    <td><%= link_to "Let's Vote", vote_candidate_path(candidate.id),method: 'post'%></td>
+    <td><%= candidate.vote_logs.size %></td>
+    <td><%= link_to candidate.name , candidate_path(candidate.id) %></td>
+    <td><%= candidate.party %></td>
+    <td><%= candidate.age %></td>
+    
+    <td>
+    <%= link_to 'update' , edit_candidate_path(candidate.id)%>
+    <%= link_to 'delete' , candidate_path(candidate.id) , method: 'delete' , data: {confirm: 'r u sure?'}%>
+
+    </td>
+
+  </tr>
+  <%end%>
+</table>
